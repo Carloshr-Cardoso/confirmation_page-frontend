@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { signUp } from './signUpActions';
 
 
@@ -13,7 +14,9 @@ const createAccessCode = (length) => {
   return result;
 }
 
-const SignUp = () =>{
+const SignUp = (props) =>{
+
+  const { signUp, account } = props;
   const length = Math.floor(Math.random() * 4) + 6;  // returns a random integer from 6 to 10
   const [AccessCode, setAccessCode] = useState(createAccessCode(length));
   
@@ -38,6 +41,10 @@ const SignUp = () =>{
     
     
   };
+
+  if(account){
+    return <Redirect to="/manage/confirmados" />
+  }
 
   return (
     <div className="container h-100 pt-5">
