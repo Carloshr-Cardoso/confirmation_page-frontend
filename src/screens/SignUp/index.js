@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signUp } from './signUpActions';
 
-// Video Aula em 48:57
 
 const createAccessCode = (length) => {
   let result = '';
@@ -20,45 +21,51 @@ const SignUp = () =>{
     setAccessCode(createAccessCode(length));
   }
 
-  const handleSubmit = (e) =>{
+  const submitHander = (e) =>{
     e.preventDefault();
+
+    /*const formData = new FormData(document.getElementById("signUpForm"));
+    const data = Object.fromEntries(formData);*/
     
-    const convidado = {
+    const data = {
       name: `${document.getElementById("firstName").value} ${document.getElementById("lastName").value}`,
       invitations: document.getElementById("invitations").value,
       accessCode: document.getElementById("accessCode").value
     };
+    console.log("*** SignUp.submitHander.data", data)
     
-    console.log(convidado);
+    signUp(data);
+    
+    
   };
 
   return (
     <div className="container h-100 pt-5">
       <div className="w-75 mx-auto h-100">
       <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit}>
+        <form id="signUpForm" onSubmit={submitHander}>
           <div className="row">
             
             <div className="col-md-5">
               <label>First Name</label>
-              <input id="firstName" type="text" className="form-control" placeholder="First Name"></input>
+              <input id="firstName" name="firstName" type="text" className="form-control" placeholder="First Name"></input>
             </div>
 
             <div className="col-md-5">
               <label>Last Name</label>
-              <input id="lastName" type="text" className="form-control" placeholder="Last Name"></input>
+              <input id="lastName" name="lastName" type="text" className="form-control" placeholder="Last Name"></input>
             </div>
 
             <div className="col-md-2">
               <label>Convidados</label>
-              <input id="invitations" type="number" min="1" max="10" className="form-control"></input>
+              <input id="invitations" name="invitations" type="number" min="1" max="10" className="form-control"></input>
             </div>
           </div>
 
           <div className="row mt-2">
             <div className="col-md-3">
               <label>Código de Acesso</label>
-              <input id="accessCode" type="text" className="form-control" value={AccessCode} readOnly="readOnly"></input>
+              <input id="accessCode" name="accessCode" type="text" className="form-control" value={AccessCode} readOnly="readOnly"></input>
             </div>
             <div className="col-md-3 mt-4">
               <div onClick={updateAcessCode} className="btn btn-round btn-sm">
@@ -72,7 +79,7 @@ const SignUp = () =>{
 
           <div className="row">
             <div className="col-md-4">
-              <button onClick={handleSubmit} className="btn btn-primary btn-round">Criar</button>
+              <button onClick={submitHander} className="btn btn-primary btn-round">Criar</button>
             </div>
           </div>
 
@@ -82,4 +89,8 @@ const SignUp = () =>{
   );
 }
 
-export default SignUp
+const mapStateToProps = (state) =>{
+  return {account: state.signUp.account}
+}
+
+export default connect(mapStateToProps, {signUp})(SignUp)
