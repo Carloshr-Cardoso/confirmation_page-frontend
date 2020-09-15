@@ -11,13 +11,13 @@ const Confirmados = () =>{
             </div>
             <div className="col text-right align-self-bottom pt-2">
                 <Link to="/manage/confirmados/create" className="btn btn-primary">
-                    Add
+                    Edit
                 </Link>
             </div>
         </div>
         
         <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
-            <div className="pr-3"><img src="https://via.placeholder.com/100" alt="Photo"></img></div>
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
             <div className="align-self-center">
                 <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
             </div>
@@ -25,7 +25,26 @@ const Confirmados = () =>{
                 <span>Edit</span>
                 <span>Delete</span>
             </div>
-
+        </div>
+        <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
+            <div className="align-self-center">
+                <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
+            </div>
+            <div className="ml-auto p-2 clearfix">
+                <span>Edit</span>
+                <span>Delete</span>
+            </div>
+        </div>
+        <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
+            <div className="align-self-center">
+                <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
+            </div>
+            <div className="ml-auto p-2 clearfix">
+                <span>Edit</span>
+                <span>Delete</span>
+            </div>
         </div>
 
     </Layout>
