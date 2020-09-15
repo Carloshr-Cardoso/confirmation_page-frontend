@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { signIn } from './signInActions';
 
 const SignIn = (props) =>{
@@ -8,7 +9,15 @@ const SignIn = (props) =>{
   const submitHander = (e) =>{
     e.preventDefault();
 
-    signIn({accessCode: 'a14asad'});
+    // const formData = new FormData(document.getElementById("accessCode"));
+    // const data = Object.fromEntries(formData)
+    const accessCode = document.getElementById("accessCode").value;
+
+    signIn({accessCode});
+  }
+
+  if(account){
+    return <Redirect to="/manage/confirmados/create"/>
   }
 
   console.log("***** SignIn.account", account)
@@ -21,7 +30,7 @@ const SignIn = (props) =>{
             <div className="row">
               <div className="col-md-12">
                 <label>Código de Acesso</label>
-                <input type="text" className="form-control"></input>
+                <input id="accessCode" name="accessCode" type="text" className="form-control"></input>
               </div>
             </div>
 
