@@ -17,7 +17,7 @@ const Confirmados = () =>{
         </div>
         
         <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
-            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="identification"></img></div>
             <div className="align-self-center">
                 <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
             </div>
@@ -27,7 +27,7 @@ const Confirmados = () =>{
             </div>
         </div>
         <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
-            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="identification"></img></div>
             <div className="align-self-center">
                 <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
             </div>
@@ -37,7 +37,7 @@ const Confirmados = () =>{
             </div>
         </div>
         <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between w-75 mx-auto">
-            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="Photo"></img></div>
+            <div className="pr-3"><img src="https://via.placeholder.com/50" alt="identification"></img></div>
             <div className="align-self-center">
                 <span className="text-primary clearfix">Carlos Henrique Ribeiro Cardoso</span>
             </div>

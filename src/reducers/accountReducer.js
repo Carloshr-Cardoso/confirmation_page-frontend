@@ -1,15 +1,18 @@
-import { SIGN_IN } from './signInActions';
-import { setAccount, setToken, setRefreshToken } from '../../helpers/account';
+import { setAccount, setToken, setRefreshToken } from '../helpers/account';
+import { removeAccount, removeToken, removeRefreshToken } from '../helpers/account';
+import { SIGN_IN, SIGN_UP, SIGN_OUT } from '../actions/accountActions';
 
 const initialState = {
     account: null,
 }
 
+//Sign In
 export default function(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
         case SIGN_IN:
+        case SIGN_UP:
             const response = payload ? payload.data : null;
             const account = response ? response.data : null;
             const metadata = response ? response.metadata : null;
@@ -21,7 +24,14 @@ export default function(state = initialState, action) {
             if (token) setToken(token);
             if (refreshToken) setRefreshToken(refreshToken);
 
-            return {...initialState, account }
+            return {...state, account };
+
+        case SIGN_OUT:
+            removeAccount(account);
+            removeToken(token);
+            removeRefreshToken(refreshToken);
+
+            return {...initialState, account:null };
         default:
             return state;
     }

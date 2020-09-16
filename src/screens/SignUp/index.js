@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { signUp } from './signUpActions';
+import { signUp } from '../../actions/accountActions';
 
 
 const createAccessCode = (length) => {
@@ -97,7 +97,7 @@ const SignUp = (props) =>{
 }
 
 const mapStateToProps = (state) =>{
-  return {account: state.signUp.account}
+  return {account: state.account.account}
 }
 
 export default connect(mapStateToProps, {signUp})(SignUp)
