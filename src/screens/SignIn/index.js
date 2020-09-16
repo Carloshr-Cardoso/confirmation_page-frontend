@@ -30,7 +30,13 @@ const SignIn = (props) =>{
             <div className="row">
               <div className="col-md-12">
                 <label>Código de Acesso</label>
-                <input id="accessCode" name="accessCode" type="text" className="form-control"></input>
+                <input 
+                  id="accessCode" 
+                  name="accessCode" 
+                  type="text" 
+                  className="form-control"
+                  required="required"
+                ></input>
               </div>
             </div>
 
