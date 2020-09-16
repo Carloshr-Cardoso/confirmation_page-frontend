@@ -5,6 +5,6 @@ import './styles/main.scss';
 import {Provider} from 'react-redux';
 import store from './store'
 
-import App from './app';
+import App from './App';
 
 ReactDOM.render(<Provider store={store}> <App/> </Provider>, document.getElementById('root'));
