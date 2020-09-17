@@ -35,7 +35,6 @@ const SignUp = (props) =>{
       invitations: document.getElementById("invitations").value,
       accessCode: document.getElementById("accessCode").value
     };
-    console.log("*** SignUp.submitHander.data", data)
     
     signUp(data);
     
@@ -43,7 +42,7 @@ const SignUp = (props) =>{
   };
 
   if(account){
-    return <Redirect to="/manage/confirmados" />
+    return <Redirect to="/manage/create" />
   }
 
   return (

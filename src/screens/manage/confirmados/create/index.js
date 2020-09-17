@@ -12,14 +12,14 @@ const Create = () =>{
     if (inputFields.length < limit){
       setInputField([...inputFields, {firstName: '', lastName: ''}]);
     }
-    console.log("Adicionei Um")
+    
     if (inputFields.length === limit){
       console.log("Limite Alcançado!")
       const button = document.getElementById("addButton");
       button.classList.remove("btn-warning");
       button.classList.add("btn-danger")
       button.disabled = true;
-      //alert("Número de Convidados Excedido!");
+      alert("Número de Convidados Excedido!");
     }
   }
 
@@ -89,7 +89,7 @@ const Create = () =>{
 
             {/* Botão de Adicionar Campo */}
             <div className="text-right">
-              <button id="addButton" onClick={addInputField} type="button" className="btn btn-warning btn-round">Adicionar</button>
+              <button id="addButton" onClick={addInputField} type="button" className="btn btn-warning btn-round">Adicionar Acompanhante</button>
             </div>
 
              {/* Submit Button */}

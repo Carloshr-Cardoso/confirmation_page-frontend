@@ -4,6 +4,7 @@ import SignIn from './screens/SignIn'
 import SignUp from './screens/SignUp'
 import Confirmados from './screens/manage/confirmados'
 import Create from './screens/manage/confirmados/create'
+import Viewer from './screens/manage/confirmados/viewer'
 import Home from './screens/home';
 
 const App = () =>{
@@ -24,7 +25,7 @@ const App = () =>{
                     <Route path="/sign-in"> <SignIn/> </Route>
                     <Route path="/sign-up"> <SignUp/> </Route>
                     <Route path="/manage/confirmados/create"> <Create/> </Route>
-                    <Route path="/manage/confirmados/edit"> <h1>Edit Confirmado</h1> </Route>
+                    <Route path="/manage/confirmados/view"> <Viewer/> </Route>
                     <Route path="/manage/confirmados"> <Confirmados/> </Route>
                     <Route path="/"> <Home/> </Route>
                 </Switch>

@@ -1,17 +1,19 @@
-import { setAccount, setToken, setRefreshToken } from '../helpers/account';
-import { removeAccount, removeToken, removeRefreshToken } from '../helpers/account';
-import { SIGN_IN, SIGN_UP, SIGN_OUT } from '../actions/accountActions';
+import { GET_CONFIRMED_BY_ID, CREATE_CONFIRMED } from '../actions/confirmedActions';
+import { getAccount, getToken, getRefreshToken } from '../helpers/account';
 
 const initialState = {
-    account: null,
+    confirmados: null,
 }
 
 export default function(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case SIGN_IN:
-        case SIGN_UP:
+        case GET_CONFIRMED_BY_ID:
+            const account = getAccount();
+            console.log(account);
+        
+        case CREATE_CONFIRMED:
             const response = payload ? payload.data : null;
             const account = response ? response.data : null;
             const metadata = response ? response.metadata : null;
@@ -25,12 +27,6 @@ export default function(state = initialState, action) {
 
             return {...state, account };
 
-        case SIGN_OUT:
-            removeAccount(account);
-            removeToken(token);
-            removeRefreshToken(refreshToken);
-
-            return {...initialState, account:null };
         default:
             return state;
     }

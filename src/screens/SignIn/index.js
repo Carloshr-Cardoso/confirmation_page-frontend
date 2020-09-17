@@ -17,10 +17,10 @@ const SignIn = (props) =>{
   }
 
   if(account){
-    return <Redirect to="/manage/confirmados/create"/>
+    return <Redirect to="/manage/confirmados/view"/>
   }
 
-  console.log("***** SignIn.account", account)
+  //console.log("***** SignIn.account", account)
 
   return (
     <div className="container h-100 pt-5">
