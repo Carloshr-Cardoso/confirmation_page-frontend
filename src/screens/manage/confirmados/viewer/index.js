@@ -1,11 +1,27 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../../../layouts/manage'
+import { getConfirmadosById } from '../../../../actions/confirmedActions'
 
-const Viewer = () =>{
+
+const Viewer = (props) =>{
+  const { account, getConfirmadosById } = props;
+  
+  let firstName = '';
+  let lastName = '';
+
+  if(account){
+    const name = account.name.split(" ");
+    firstName = name[0];
+    lastName = name[1];
+    
+    console.log(`${firstName} ${lastName}`);
+  }
+
 
   const [inputFields, setInputField] = useState([
-    {firstName: 'Carlos', lastName: 'Cardoso'},
+    {firstName, lastName},
   ])
 
 
@@ -61,5 +77,7 @@ const Viewer = () =>{
     </Layout>
   );
 }
-
-export default Viewer
+const mapStateToProps = (state) =>{
+  return {account: state.account.account}
+}
+export default connect(mapStateToProps, {getConfirmadosById})(Viewer)

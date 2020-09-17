@@ -10,5 +10,5 @@ export const getConfirmadosById = (id) =>{
 
 export const createConfirmado = (data) =>{
     const payload = apiPost('/confirmed', data);
-    return {type: SIGN_UP, payload: payload}
+    return {type: CREATE_CONFIRMED, payload: payload}
 }

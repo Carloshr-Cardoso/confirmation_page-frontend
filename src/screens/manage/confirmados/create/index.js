@@ -1,14 +1,34 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 import Layout from '../../../layouts/manage'
 
-const Create = () =>{
+const Create = (props) =>{
+  const { account } = props;
+  
+  let firstName = '';
+  let lastName = '';
+  
+  if(account){
+    const name = account.name.split(" ");
+    firstName = name[0];
+    lastName = name[1];
+    //const limit = account.invitations;
+    
+    console.log(`${firstName} ${lastName}`);
+  }
+
 
   const [inputFields, setInputField] = useState([
-    {firstName: 'Carlos', lastName: 'Cardoso'},
+    {firstName, lastName},
   ])
 
   const addInputField = () =>{
-    const limit = 3;
+    //const limit = 3;
+    let limit = 0;
+    if(account){
+      limit = account.invitations;
+    }
+    console.log("*** Create.AddInputField.Limit", limit);
     if (inputFields.length < limit){
       setInputField([...inputFields, {firstName: '', lastName: ''}]);
     }
@@ -102,4 +122,7 @@ const Create = () =>{
   );
 }
 
-export default Create
+const mapStateToProps = (state) =>{
+  return {account: state.account.account}
+}
+export default connect(mapStateToProps)(Create)

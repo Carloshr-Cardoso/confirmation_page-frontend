@@ -10,10 +10,15 @@ export default function(state = initialState, action) {
 
     switch (type) {
         case GET_CONFIRMED_BY_ID:
-            const account = getAccount();
-            console.log(account);
+            const response = payload ? payload.data : null;
+            console.log(payload);
+            // const account = getAccount();
+            // console.log(account);
+            return { ...state };
         
         case CREATE_CONFIRMED:
+
+            //console.log(payload)
             const response = payload ? payload.data : null;
             const account = response ? response.data : null;
             const metadata = response ? response.metadata : null;
