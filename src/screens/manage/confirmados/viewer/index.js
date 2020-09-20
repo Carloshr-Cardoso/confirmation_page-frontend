@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../../../layouts/manage'
-import { getConfirmadosById } from '../../../../actions/confirmedActions'
+import { getConfirmados } from '../../../../actions/confirmedActions'
 
 
 const Viewer = (props) =>{
-  const { account, getConfirmadosById } = props;
+  const { account, getConfirmados } = props;
   
   let firstName = '';
   let lastName = '';
@@ -80,4 +80,4 @@ const Viewer = (props) =>{
 const mapStateToProps = (state) =>{
   return {account: state.account.account}
 }
-export default connect(mapStateToProps, {getConfirmadosById})(Viewer)
+export default connect(mapStateToProps, {getConfirmados})(Viewer)

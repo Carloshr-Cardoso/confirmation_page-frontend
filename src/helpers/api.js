@@ -4,7 +4,7 @@ export const getApiUrl = (path) =>{
     return `http://localhost:3001${path}`;
 }
 
-export const getHeaders = () =>{
+export const getHeaders = (params) =>{
     return {};
 }
 
@@ -17,11 +17,13 @@ export const apiPost = (path, data = {}) =>{
     return axios.post(url, data, options)
 }
 
-export const apiGet = (path) => {
+export const apiGet = (path, data = {}) => {
     const url = getApiUrl(path);
     const options = {
-        headers: getHeaders()
+        // headers: {
+        //     Authorization: 'Bearer ' + token 
+        //   }
     }
-
+    
     return axios.get(url, options);
 }
