@@ -1,38 +1,26 @@
-import { GET_CONFIRMED_BY_ID, CREATE_CONFIRMED } from '../actions/confirmedActions';
+import { GET_CONFIRMED, CREATE_CONFIRMED } from '../actions/confirmedActions';
 import { getAccount, getToken, getRefreshToken } from '../helpers/account';
 
 const initialState = {
-    confirmados: null,
+    confirmado: null
 }
 
-export default function(state = initialState, action) {
-    const { type, payload } = action;
-
+export default function(state=initialState, action){
+    const { type, payload } = action
     switch (type) {
-        case GET_CONFIRMED_BY_ID:
-            const response = payload ? payload.data : null;
-            console.log(payload);
-            // const account = getAccount();
-            // console.log(account);
-            return { ...state };
-        
         case CREATE_CONFIRMED:
-
-            //console.log(payload)
             const response = payload ? payload.data : null;
-            const account = response ? response.data : null;
-            const metadata = response ? response.metadata : null;
+            const confirmado = response ? response.data : null;
             
-            const token = metadata ? metadata.token : null;
-            const refreshToken = metadata ? metadata.refreshToken : null;
+            return {...state, confirmado}
 
-            if (account) setAccount(account);
-            if (token) setToken(token);
-            if (refreshToken) setRefreshToken(refreshToken);
-
-            return {...state, account };
-
+        case GET_CONFIRMED:
+            console.log(payload);
+            const confirmados = payload ? payload.data : null;
+            //const confirmado = response ? response.data : null;
+            
+            return {...state, confirmados}
         default:
-            return state;
+            return state
     }
 }

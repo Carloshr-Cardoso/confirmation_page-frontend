@@ -1,11 +1,16 @@
 import axios from 'axios';
+import { getToken } from './account';
 
 export const getApiUrl = (path) =>{
     return `http://localhost:3001${path}`;
 }
 
-export const getHeaders = (params) =>{
-    return {};
+export const getHeaders = () =>{
+    const token = getToken();
+    if (!token) return {};
+    return {
+        Authorization: `Bearer ${token}`,
+    };
 }
 
 export const apiPost = (path, data = {}) =>{
@@ -17,12 +22,10 @@ export const apiPost = (path, data = {}) =>{
     return axios.post(url, data, options)
 }
 
-export const apiGet = (path, data = {}) => {
+export const apiGet = (path) => {
     const url = getApiUrl(path);
     const options = {
-        // headers: {
-        //     Authorization: 'Bearer ' + token 
-        //   }
+        headers: getHeaders()
     }
     
     return axios.get(url, options);

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import Layout from '../../../layouts/manage'
+import Layout from '../../../layouts/manage';
+import createConfirmado from '../../../../actions/confirmedActions';
 
 const Create = (props) =>{
-  const { account } = props;
+  const { account, confirmado, createConfirmado } = props;
   
   let firstName = '';
   let lastName = '';
@@ -14,27 +15,25 @@ const Create = (props) =>{
     lastName = name[1];
     //const limit = account.invitations;
     
-    console.log(`${firstName} ${lastName}`);
+    //console.log(`${firstName} ${lastName}`);
   }
 
 
-  const [inputFields, setInputField] = useState([
-    {firstName, lastName},
-  ])
+  const [inputFields, setInputField] = useState([])
 
   const addInputField = () =>{
     //const limit = 3;
     let limit = 0;
     if(account){
-      limit = account.invitations;
+      limit = account.invitations - 1;
     }
-    console.log("*** Create.AddInputField.Limit", limit);
+    //console.log("*** Create.AddInputField.Limit", limit);
     if (inputFields.length < limit){
       setInputField([...inputFields, {firstName: '', lastName: ''}]);
     }
     
     if (inputFields.length === limit){
-      console.log("Limite Alcançado!")
+      //console.log("Limite Alcançado!")
       const button = document.getElementById("addButton");
       button.classList.remove("btn-warning");
       button.classList.add("btn-danger")
@@ -56,7 +55,10 @@ const Create = (props) =>{
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log("InputFields", inputFields)
+    inputFields.map((inputField) =>(
+      //console.log(`Acompanhante => ${inputField.firstName} ${inputField.lastName}`)
+      createConfirmado({name: `${inputField.firstName} ${inputField.lastName}`})
+    ))
   }
 
   const handleChangeInput = (index, event) =>{
@@ -71,6 +73,32 @@ const Create = (props) =>{
         <div className="w-50 mx-auto">
           <form onSubmit={handleSubmit}>
             
+          <div className="row mb-2">
+                {/* Primeiro Nome */}
+                <div className="col-md-5">
+                  <input
+                    name="firstName" 
+                    type="text" 
+                    className="form-control text-center" 
+                    value={firstName}
+                    placeholder={firstName || 'First Name'}
+                    disabled="disabled"
+                  ></input>
+                </div>
+                
+                {/* Segundo Nome */}
+                <div className="col-md-5">
+                  <input 
+                    name="lastName"
+                    type="text" 
+                    className="form-control text-center" 
+                    value={lastName}
+                    placeholder={lastName || 'Last Name'}
+                    disabled="disabled"
+                  ></input>
+                </div>
+              </div>
+
             { inputFields.map((inputField, index) =>(
               <div className="row mb-2" key={index}>
                 {/* Primeiro Nome */}
@@ -123,6 +151,6 @@ const Create = (props) =>{
 }
 
 const mapStateToProps = (state) =>{
-  return {account: state.account.account}
+  return {account: state.account.account, confirmado: state.confirmado.confirmado}
 }
-export default connect(mapStateToProps)(Create)
+export default connect(mapStateToProps, {createConfirmado})(Create)

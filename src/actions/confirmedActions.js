@@ -10,10 +10,11 @@ export const getConfirmadoById = (id) =>{
 }
 
 export const getConfirmados = (convidadoId) =>{
-    const payload = apiGet('/confirmed')
+    const payload = apiGet('/confirmed/');
+    return {type: GET_CONFIRMED, payload: payload}
 }
 
-export const createConfirmado = (data) =>{
+export default function createConfirmado (data){
     const payload = apiPost('/confirmed', data);
     return {type: CREATE_CONFIRMED, payload: payload}
 }
