@@ -22,7 +22,7 @@
 }
 
 div .navBaby{
-    height: 4vh;
+    height: 5vh;
     text-align: right;
 }
 
@@ -34,6 +34,8 @@ div .navBaby{
     cursor: pointer;
 }
 
+
+//Inicio HERO
 .hero{
     background: url('./images/hero6.png');
     background-size: cover;
@@ -45,3 +47,95 @@ div .navBaby{
     color: white;
 }
 
+.hero-title{
+    margin-top: 0px;
+    font-size: 35px;
+}
+
+.hero-text{
+    font-size: 16px;
+    max-width: 700px;
+}
+
+div .absolute {
+    position: absolute;
+    bottom: 30vh;
+    left: 10vw;
+    
+  }
+
+.hero-button{
+    border: none;
+    color: #63aca4;
+    font-size: 14px;
+    background-color: #ffffff;
+    padding: 20px 25px 20px 35px;
+    border-radius: 35px;
+    text-transform: uppercase;
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3d6863;
+    cursor: pointer;
+}
+
+.hero-button .hero-button-icon{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.hero-button .hero-button-text{
+    margin-top: 5px;
+}
+
+.hero-button:hover{
+    background-color:#01534f;
+    color: white;
+}
+
+.nav-items{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-acessCode{
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+}
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-signIn{
+    align-items: center;
+    display: block;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1.8rem;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.btn-entrar{
+    margin-right: 1rem;
+    background: #25dfa1;
+}
+
+.btn-cancel{
+    background: #f16060;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    background: gray;
+}
