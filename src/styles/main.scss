@@ -16,3 +16,32 @@
         box-shadow: none;
     }
 }
+
+.bg-baby-green{
+    background-color: #8dd7cf;
+}
+
+div .navBaby{
+    height: 4vh;
+    text-align: right;
+}
+
+.btn-sign-in{
+    margin-left: 10px;
+}
+
+.action-icon{
+    cursor: pointer;
+}
+
+.hero{
+    background: url('./images/hero6.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75vh;
+    padding: 35px 100px 0px;
+
+    text-align: center;
+    color: white;
+}
+

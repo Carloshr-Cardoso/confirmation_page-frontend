@@ -11,7 +11,7 @@ const App = () =>{
     return (
         <BrowserRouter>
             <div>
-                <nav>
+                {/* <nav>
                     <ul className="list-group list-group-horizontal">
                         <li className="list-group-item"> <Link to="/sign-in"> Sign In </Link> </li>
                         <li className="list-group-item"> <Link to="/sign-up"> Sign Up </Link> </li>
@@ -19,7 +19,7 @@ const App = () =>{
                         <li className="list-group-item"> <Link to="/manage/confirmados/edit"> Edit Confirmado </Link> </li>
                         <li className="list-group-item"> <Link to="/manage/confirmados"> Confirmados </Link> </li>
                     </ul>
-                </nav>
+                </nav> */}
 
                 <Switch>
                     <Route path="/sign-in"> <SignIn/> </Route>

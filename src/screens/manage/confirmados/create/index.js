@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import Layout from '../../../layouts/manage';
-import createConfirmado from '../../../../actions/confirmedActions';
+import {createConfirmado} from '../../../../actions/confirmedActions';
 
 const Create = (props) =>{
   const { account, confirmado, createConfirmado } = props;
@@ -82,7 +82,8 @@ const Create = (props) =>{
                     className="form-control text-center" 
                     value={firstName}
                     placeholder={firstName || 'First Name'}
-                    disabled="disabled"
+                    readOnly="readOnly"
+                    // disabled="disabled"
                   ></input>
                 </div>
                 
@@ -94,7 +95,8 @@ const Create = (props) =>{
                     className="form-control text-center" 
                     value={lastName}
                     placeholder={lastName || 'Last Name'}
-                    disabled="disabled"
+                    readOnly="readOnly"
+                    // disabled="disabled"
                   ></input>
                 </div>
               </div>
