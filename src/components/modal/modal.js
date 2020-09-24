@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signIn } from '../../actions/accountActions';
-import './modal.css';
 
 const Modal = ({ show, close, account, signIn }) =>{
     const submitHander = (e) =>{
@@ -14,8 +13,8 @@ const Modal = ({ show, close, account, signIn }) =>{
     }
 
     if(account){
-        close()
-        //return <Redirect to="/manage/confirmados/view"/>
+        return <Redirect to="/manage" />
+        //close()
     }
     
     return (
@@ -47,9 +46,9 @@ const Modal = ({ show, close, account, signIn }) =>{
                         </div>
 
                         <div>
-                            <div className="botoes">
+                            <div className="modal-botoes">
                                 <button className="btn-signIn btn-entrar">Entrar</button>
-                                <button onClick={close} className="btn-signIn btn-cancel">Close</button>
+                                <button onClick={close} className="btn-signIn btn-cancel">Fechar</button>
                             </div>
                         </div>
 

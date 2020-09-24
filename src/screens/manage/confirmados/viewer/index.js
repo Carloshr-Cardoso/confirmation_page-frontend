@@ -1,81 +1,60 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Layout from '../../../layouts/manage';
 import { Link } from 'react-router-dom';
+import {listConfirmados} from '../../../../actions/confirmedActions';
 
-//Video em 22:23
-
-const Viewer = (props) =>{
-  const { account, confirmado, getConfirmados } = props;
-  let firstName = '';
-  let lastName = '';
-  
-  if(account){
-    const name = account.name.split(" ");
-    firstName = name[0];
-    lastName = name[1];
-  }
-
-
-  const [inputFields, setInputField] = useState([{firstName, lastName}])
-
-  const removeInputField = (index) =>{
-    const button = document.getElementById("addButton");
-    button.classList.remove("btn-danger");
-    button.classList.add("btn-warning")
-    button.disabled = false;
-    const fields = [...inputFields];
-    fields.splice(index, 1);
-    setInputField(fields);
-    
-  }
-
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    // inputFields.map((inputField) =>(
-    //   //console.log(`Acompanhante => ${inputField.firstName} ${inputField.lastName}`)
-    //   createConfirmado({name: `${inputField.firstName} ${inputField.lastName}`})
-    // ))
-  }
+const Viewer = ({ confirmados, listConfirmados }) =>{
+  useEffect(()=>{
+    listConfirmados();
+  }, []);
 
   return (
     <Layout>
-        <div className="w-50 mx-auto">
-          <form onSubmit={handleSubmit}>
-            
-          
-            { inputFields.map((inputField, index) =>(
-              <div className="row mb-2" key={index}>
-                {/* Primeiro Nome */}
-                <div className="col-md-5">
-                  <input
-                    name="firstName" 
-                    type="text" 
-                    className="form-control text-center" 
-                    value={inputField.firstName}
-                    placeholder={inputField.firstName || 'First Name'}
-                    readOnly={true}
-                  ></input>
-                </div>
+        <div className="confirmed-list">
+          <form>
+            { confirmados && confirmados.length ?
+              confirmados.map((confirmado, index)=>{
+                const name = confirmado.name.split(" ");
+                const firstName = name[0];
+                const lastName = name[1];
+                return (
+                <div className="confirmed-items" key={index}>
+                  {/* Primeiro Nome */}
+                  <div className="col-md-5">
+                    <input
+                      name="firstName" 
+                      type="text" 
+                      className="form-control text-center" 
+                      value={firstName}
+                      placeholder={firstName || 'First Name'}
+                      readOnly={true}
+                    ></input>
+                  </div>
                 
-                {/* Segundo Nome */}
-                <div className="col-md-5">
-                  <input 
-                    name="lastName"
-                    type="text" 
-                    className="form-control text-center" 
-                    value={inputField.lastName}
-                    placeholder={inputField.lastName || 'Last Name'}
-                    readOnly={true}
-                  ></input>
-                </div>
-                
-              </div>
-            )) }
+                  {/* Segundo Nome */}
+                  <div className="col-md-5">
+                    <input 
+                      name="lastName"
+                      type="text" 
+                      className="form-control text-center" 
+                      value={lastName}
+                      placeholder={lastName || 'Last Name'}
+                      readOnly={true}
+                    ></input>
+                  </div>
+              </div>)
+              }) :
+              
+              null
+
+            }
 
             {/* Submit Button */}
             <div>
-              <button type="button" className="btn btn-success btn-round"> <Link to="/manage/confirmados/create"> Editar </Link> </button>
+              <Link to="/manage/confirmados/create">
+                <button type="button" className="btn btn-warning btn-round btn-manage"> Editar </button>
+              </Link>
             </div>
           </form>
         </div>
@@ -84,6 +63,9 @@ const Viewer = (props) =>{
 }
 
 const mapStateToProps = (state) =>{
-  return {account: state.account.account, confirmado: state.confirmado.confirmado}
+  return {
+    account: state.account.account, 
+    confirmados: state.confirmado.confirmados
+  }
 }
-export default connect(mapStateToProps)(Viewer)
+export default connect(mapStateToProps, {listConfirmados})(Viewer)

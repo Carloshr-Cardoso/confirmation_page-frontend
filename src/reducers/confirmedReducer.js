@@ -13,6 +13,7 @@ export default function(state=initialState, action){
         case CREATE_CONFIRMED: {
             const response = payload ? payload.data : null;
             const confirmado = response ? response.data : null;
+            //console.log(confirmado);
             
             return {...state, confirmado}
         }

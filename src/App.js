@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import SignIn from './screens/SignIn'
-import SignUp from './screens/SignUp'
-import Confirmados from './screens/manage/confirmados'
-import Create from './screens/manage/confirmados/create'
-import Viewer from './screens/manage/confirmados/viewer'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import SignIn from './screens/SignIn';
+import SignUp from './screens/SignUp';
+import Confirmados from './screens/manage/confirmados';
+import Create from './screens/manage/confirmados/create';
+import Viewer from './screens/manage/confirmados/viewer';
 import Home from './screens/home';
+import ConfirmeConvidado from './screens/confirmeConvidado';
 
 const App = () =>{
     return (
@@ -27,6 +28,7 @@ const App = () =>{
                     <Route path="/manage/confirmados/create"> <Create/> </Route>
                     <Route path="/manage/confirmados/view"> <Viewer/> </Route>
                     <Route path="/manage/confirmados"> <Confirmados/> </Route>
+                    <Route path="/manage"> <ConfirmeConvidado/> </Route>
                     <Route path="/"> <Home/> </Route>
                 </Switch>
             </div>

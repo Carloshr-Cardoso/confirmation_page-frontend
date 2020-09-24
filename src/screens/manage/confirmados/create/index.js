@@ -4,7 +4,7 @@ import Layout from '../../../layouts/manage';
 import {createConfirmado} from '../../../../actions/confirmedActions';
 
 const Create = (props) =>{
-  const { account, confirmado, createConfirmado } = props;
+  const { account, createConfirmado } = props;
   
   let firstName = '';
   let lastName = '';
@@ -13,9 +13,6 @@ const Create = (props) =>{
     const name = account.name.split(" ");
     firstName = name[0];
     lastName = name[1];
-    //const limit = account.invitations;
-    
-    //console.log(`${firstName} ${lastName}`);
   }
 
 
@@ -153,6 +150,8 @@ const Create = (props) =>{
 }
 
 const mapStateToProps = (state) =>{
-  return {account: state.account.account, confirmado: state.confirmado.confirmado}
+  return {
+    account: state.account.account,
+    confirmado: state.confirmado.confirmado}
 }
 export default connect(mapStateToProps, {createConfirmado})(Create)
