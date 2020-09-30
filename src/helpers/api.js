@@ -2,7 +2,8 @@ import axios from 'axios';
 import { getToken } from './account';
 
 export const getApiUrl = (path) =>{
-    return `http://localhost:3001${path}`;
+    // return `http://localhost:3001${path}`;
+    return `http://192.168.1.2:3001${path}`;
 }
 
 export const getHeaders = () =>{
@@ -29,4 +30,13 @@ export const apiGet = (path) => {
     }
     
     return axios.get(url, options);
+}
+
+export const apiPut = (path, data) =>{
+    const url = getApiUrl(path);
+    const options = {
+        headers: getHeaders()
+    }
+
+    return axios.put(url, data, options)
 }
