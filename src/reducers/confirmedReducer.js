@@ -1,10 +1,11 @@
-import { LIST_CONFIRMED, CREATE_CONFIRMED, GET_CONFIRMED_BY_ID, PUT_CONFIRMED, CLEAR_CONFIRMED } from '../actions/confirmedActions';
+import { LIST_CONFIRMED, CREATE_CONFIRMED, GET_CONFIRMED_BY_ID, PUT_CONFIRMED, CLEAR_CONFIRMED, DELETE_CONFIRMED, CLEAR_DELETE_CONFIRMED } from '../actions/confirmedActions';
 
 //import { getAccount, getToken, getRefreshToken } from '../helpers/account';
 
 const initialState = {
     confirmado: null,
-    confirmados: []
+    confirmados: [],
+    isDeleted: false
 }
 
 export default function(state=initialState, action){
@@ -35,10 +36,21 @@ export default function(state=initialState, action){
             
             return {...state, confirmado}
         }
+        case DELETE_CONFIRMED: {
+            const response = payload ? payload.data : null;
+            const isDeleted = response ? response.data : null;
+            
+            return {...state, isDeleted: isDeleted}
+        }
         case CLEAR_CONFIRMED: {
             
             return {...state, confirmado: null}
         }
+        case CLEAR_DELETE_CONFIRMED: {
+            
+            return {...state, isDeleted: false}
+        }
+        
         default:
             return state
     }

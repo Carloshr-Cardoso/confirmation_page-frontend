@@ -1,13 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { deleteConfirmed, clearDeleteConfirmed } from '../../actions/confirmedActions'
 
-
-const DeleteModal = ({ id, show, close, account }) =>{
+const DeleteModal = ({ id, show, close, account, deleteConfirmed, clearDeleteConfirmed, isDeleted }) =>{
 
   const submitHander = (e) =>{
     e.preventDefault();
-    console.log("Acompanhante Apagado")
+    deleteConfirmed(id);
+    // console.log("Acompanhante Apagado")
     
+  }
+
+  if(isDeleted){
+    // console.log("Acompanhante DELETADO")
+    clearDeleteConfirmed();
+    alert ("Acompanhante Excluido com Sucesso")
+    return <Redirect to="/manage/confirmados/list" />
   }
 
   if (account){
@@ -19,7 +28,7 @@ const DeleteModal = ({ id, show, close, account }) =>{
         }}
       >
         <div className="modal-header">
-          <p>Remover Acompanhante {id}?</p>
+          <p>Remover Acompanhante?</p>
           <span onClick={close} className="close-modal-btn">X</span>
         </div>
         <div className="modal-content">
@@ -38,7 +47,10 @@ const DeleteModal = ({ id, show, close, account }) =>{
 };
 
 const mapStateToProps = (state) =>{
-    return {account: state.account.account}
+    return {
+      account: state.account.account,
+      isDeleted: state.confirmado.isDeleted
+    }
   }
 
-export default connect(mapStateToProps)(DeleteModal);
+export default connect(mapStateToProps, {deleteConfirmed, clearDeleteConfirmed})(DeleteModal);
