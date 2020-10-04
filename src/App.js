@@ -8,6 +8,7 @@ import Crud from './screens/manage/confirmados/crud';
 import List from './screens/manage/confirmados/list';
 import Home from './screens/home';
 import ConfirmeConvidado from './screens/confirmeConvidado';
+import ListAllConfirmados from './screens/admin/listAllConfirmados'
 
 const App = () =>{
     const TITLE = "HOME"
@@ -18,17 +19,8 @@ const App = () =>{
             </Helmet>
             <BrowserRouter>
                 <div>
-                    {/* <nav>
-                        <ul className="list-group list-group-horizontal">
-                            <li className="list-group-item"> <Link to="/sign-in"> Sign In </Link> </li>
-                            <li className="list-group-item"> <Link to="/sign-up"> Sign Up </Link> </li>
-                            <li className="list-group-item"> <Link to="/manage/confirmados/create"> Create Confirmado </Link> </li>
-                            <li className="list-group-item"> <Link to="/manage/confirmados/edit"> Edit Confirmado </Link> </li>
-                            <li className="list-group-item"> <Link to="/manage/confirmados"> Confirmados </Link> </li>
-                        </ul>
-                    </nav> */}
-
                     <Switch>
+                        <Route path="/admin/list"> <ListAllConfirmados/> </Route>
                         <Route path="/sign-in"> <SignIn/> </Route>
                         <Route path="/sign-up"> <SignUp/> </Route>
                         <Route path="/manage/confirmados/create"> <Crud/> </Route>

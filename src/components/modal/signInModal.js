@@ -10,8 +10,11 @@ const SignInModal = ({ show, close, account, signIn }) =>{
     signIn({accessCode});
   }
 
-  if(account){
+  if(account && account.role === 1){
     return <Redirect to="/manage" />
+  }
+  if (account && account.role === 2){
+    return <Redirect to="/admin/list" />
   }
     
   return (

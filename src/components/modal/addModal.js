@@ -19,7 +19,7 @@ const AddModal = ({ show, close, account, confirmado, createConfirmado, clearCon
     //console.log("*** Confirmado Criado =>", confirmado);
     alert(`*** Acompanhante ${confirmado.nome} Criado com Sucesso`);
     clearConfirmado();
-    return <Redirect to="/manage/confirmados/list" />
+    return <Redirect to="/manage/confirmados/create" />
   }
   
   return (

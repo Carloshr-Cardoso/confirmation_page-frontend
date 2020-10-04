@@ -8,7 +8,7 @@ const Footer = () =>{
         <div className="row">
           <div className="col lg-5">
             <ul>
-              <li className="list-group-item"> <Link to="/sign-in"> Sign In| </Link> </li>
+              <li className="list-group-item"> <Link to="/admin/list"> Admin List| </Link> </li>
               <li className="list-group-item"> <Link to="/sign-up"> Sign Up| </Link> </li>
               <li className="list-group-item"> <Link to="/manage/confirmados/list"> View Confirmados| </Link> </li>
               <li className="list-group-item"> <Link to="/manage/confirmados/create"> Create Confirmado| </Link> </li>
